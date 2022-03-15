@@ -1,9 +1,10 @@
 <script>
-	import Header from './Header.svelte';
+	import Header from '../components/Header.svelte';
 </script>
 
 <Header />
 <div id="startTest">
+	<!-- <button><a href="/testPage" accesskey="s">Start Test</a></button> -->
 	<button><a href="/testPage" accesskey="s">Start Test</a></button>
 </div>
 

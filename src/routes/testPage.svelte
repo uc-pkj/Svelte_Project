@@ -1,13 +1,11 @@
 <script>
-	
-	
 	// import components
-	import Header from './Header.svelte';
+	import Header from '../components/Header.svelte';
 	// @ts-ignore
-	import Footer from './Footer.svelte';
-	
+	import Footer from '../components/Footer.svelte';
+
 	// fetching data from JSON file
-	import { saveddata } from '../Store/store.js';
+	import { saveddata } from '../store.js';
 	import { onMount } from 'svelte';
 	const apiURL = '/static/data/question.json';
 	let data = [];
@@ -16,8 +14,8 @@
 		data = await response.json();
 		saveddata.set(data);
 	});
-	
-	// change question 
+
+	// change question
 	let currentques = 0;
 	// increase current question
 	function incurrentques() {
@@ -27,39 +25,26 @@
 	function decurrentques() {
 		currentques -= 1;
 	}
-	
-	// onclick change questions 
+
+	// onclick change questions
 	const changques = (event) => {
 		currentques = event.detail;
 	};
 
-	
-	// store answers in a array in store file 
-	import {savedanswers} from '../Store/store'
+	// store answers in a array in store file
+	import { savedanswers } from '../store.js';
 
-	let selected=[];
-	$: savedanswers.update((items) =>{
-		return [...selected]
-	})
-	// console.log(savedanswers);
-
-
-	// store userclick data 
-	import {quesanswerdata} from '../Store/store.js'
-	// import {onMount} from 'svelte' // already declared
-	let storedata=[];
-	onMount(async () => {
-		const res = await fetch(`/data/question.json`);
-		storedata = await res.json();
-		quesanswerdata.set(storedata);
+	let selected = [];
+	$: savedanswers.update((items) => {
+		return [...selected];
 	});
-
+	console.log(selected);
 </script>
 
 <Header />
 
 <div id="alldata">
-	{#each storedata as item, i}
+	{#each data as item, i}
 		{#if currentques == i}
 			<div>
 				<h2>Q{i + 1}.{JSON.parse(item.content_text).question}</h2>
@@ -67,8 +52,14 @@
 				{#each JSON.parse(item.content_text).answers as ans, Index}
 					<div id="answer">
 						<!-- declare answer id in style  -->
-						<input type="radio" id={ans.id} value={ans.answer} name="answer" bind:group={selected[i]}/>
-						<label for="{ans.id}">{@html ans.answer}</label>
+						<input
+							type="radio"
+							id={ans.id}
+							value={ans.answer}
+							name="answer"
+							bind:group={selected[i]}
+						/>
+						<label for={ans.id}>{@html ans.answer}</label>
 					</div>
 				{/each}
 			</div>

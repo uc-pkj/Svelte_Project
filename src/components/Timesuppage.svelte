@@ -15,7 +15,7 @@
 				<main>
 					<h2>TIMES UP, Now click here to go to Result Page.</h2>
 					<div>
-						<button ><a href="/ResultPage" accesskey="r">Result</a></button>
+						<button ><a href="../routes/ResultPage" accesskey="r">Result</a></button>
 					</div>
 				</main>
 			</div>

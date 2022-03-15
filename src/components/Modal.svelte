@@ -6,7 +6,7 @@
 	}
 
 	export let show = false;
-	import ResultPage from './ResultPage.svelte';
+	import ResultPage from '../routes/ResultPage.svelte';
 </script>
 
 {#if show}

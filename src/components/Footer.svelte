@@ -18,7 +18,7 @@
 	};
 	export let count;
 	// @ts-ignore
-	import { clickOutside } from './clickOutside.js';
+	import { clickOutside } from '../function/clickOutside.js';
 	function handleClickOutside(event) {
 		sidebar_show = false;
 	}
@@ -39,7 +39,7 @@
 			<Timer />
 		</div>
 
-		<div use:clickOutside on:click_outside={handleClickOutside}>
+		<div use:clickOutside on:click-outside={handleClickOutside}>
 		<!-- <div> -->
 			<!-- svelte-ignore a11y-accesskey -->
 			<button

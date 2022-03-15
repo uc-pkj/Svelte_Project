@@ -1,7 +1,7 @@
 <script>
-	import Header from './Header.svelte';
+	import Header from '../components/Header.svelte';
 
-	import { saveddata } from '../Store/store.js';
+	import { saveddata } from '../store.js';
 	import { onMount } from 'svelte';
 
 	// to print all questions
@@ -13,35 +13,38 @@
 	});
 
 	// to make answer only clickable not skipable (when i jump to any question)
-	import { savedanswers } from '../Store/store.js';
+	import { savedanswers } from '../store.js';
 	$: data2 = $savedanswers.filter(Boolean);
 
-	// let ansdata = [];
+	// currently working 
+	// let correctans = [];
 	// for (let i = 0; i < $saveddata.length; i++) {
 	// 	let x = 0;
 	// 	for (let j = 0; j < 4; j++) {
 	// 		if (JSON.parse($saveddata[i].content_text).answers[j].is_correct == 1) {
-	// 			x = j;
+	// 			x = JSON.parse($saveddata[i].content_text).answers[i].is_correct.detail;
 	// 		}
 	// 	}
-	// 	ansdata[i] = x;
-	// 	// console.log('actual correct', ansdata);
+	// 	correctans[i] = x;
 	// }
+	// console.log('All correct answers', correctans);
 
 	// Compare both userselected option and corrected Option
 	// savedanswers
-	// ansdata
-	// let countcorrect=0;
-	// $: for(let i=0;i<11;i++)
-	// {
-	// 	for(let j=0;j<11;j++)
-	// 	{
-	// 		if($savedanswers[i]==ansdata[j])
-	// 		{
-	// 			countcorrect+=1;
+	// correctans
+
+	// let countcorrect =0;
+	// for (let i = 0; i < $saveddata.length; i++) {
+	// 	for (let j = 0; j < 4; j++) {
+	// 		if (savedanswers[i] === correctans[j]) {
+	// 			countcorrect += 1;
+	// 			console.log('hii');
+	// 		} else {
+	// 			console.log('not working');
 	// 		}
 	// 	}
 	// }
+	// console.log('correct ans is ', countcorrect);
 </script>
 
 <Header />
@@ -79,29 +82,28 @@
 	<!-- for questions  -->
 	<div class="showques">
 		<!-- <div> -->
-			<h2 id="topques">Questions..</h2>
-			{#each data as item, i}
-				<div id="align">
-					<div>
-						<p class="bold"><a href="#">Q{i + 1}.{JSON.parse(item.content_text).question}</a></p>
-					</div>
-					<div id="answersshow">
-						<p class="border">A</p>
-						<p class="border">B</p>
-						<p class="border">C</p>
-						<p class="border">D</p>
-					</div>
+		<h2 id="topques">Questions..</h2>
+		{#each data as item, i}
+			<div id="align">
+				<div>
+					<!-- svelte-ignore a11y-invalid-attribute -->
+					<p class="bold"><a href="#">Q{i + 1}.{JSON.parse(item.content_text).question}</a></p>
 				</div>
-			{/each}
-		</div>
+				<div id="answersshow">
+					<p class="border">A</p>
+					<p class="border">B</p>
+					<p class="border">C</p>
+					<p class="border">D</p>
+				</div>
+			</div>
+		{/each}
+	</div>
 	<!-- </div> -->
 </main>
 
 <!-- <h1>Total correct {countcorrect}</h1> -->
-
-
 <style>
-	#align{
+	#align {
 		display: flex;
 		flex-direction: row;
 	}
@@ -109,10 +111,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-	hr {
-		border: 2px solid rgb(114, 110, 110);
-		border-radius: 15px;
 	}
 	.border {
 		border: 1px solid black;

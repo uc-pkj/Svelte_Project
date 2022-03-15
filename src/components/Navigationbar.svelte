@@ -5,8 +5,8 @@
 	import { fly } from 'svelte/transition';
 	export let show = false;
 
-	import {saveddata } from '../Store/store.js';
-	import TestPage from './testPage.svelte';
+	import {saveddata } from '../store.js';
+	import TestPage from '../routes/testPage.svelte';
 	let data = [];
 	onMount(() => {
 		saveddata.subscribe((value) => {
@@ -22,7 +22,7 @@
 	}
 
 	// show attempted or unattempted questions
-	import {savedanswers} from '../Store/store.js'
+	import {savedanswers} from '../store.js'
 	$: data1= $savedanswers.filter(Boolean);
 	
 </script>
@@ -34,7 +34,10 @@
 		<h3>Questions..</h3>
 		{#each data as item, i}
 			<p class="elep">
-				<a href="#" on:click={() => handleClick((clickedques = i))} accesskey={i + 1}><strong>Q{i + 1}. </strong>{JSON.parse(item.content_text).question}</a
+				<!-- svelte-ignore a11y-invalid-attribute -->
+				<!-- access key not working  -->
+				<!-- <a href="#" on:click={() => handleClick((clickedques = i))} accesskey={i + 1}><strong>Q{i + 1}. </strong>{JSON.parse(item.content_text).question}</a -->
+				<a href="#" on:click={() => handleClick((clickedques = i))}><strong>Q{i + 1}. </strong>{JSON.parse(item.content_text).question}</a
 				>
 			</p>
 		{/each}
