@@ -11,17 +11,17 @@
 
 {#if show}
 	<div>
-		<div
-			class="modal-overlay"
-			on:click={overlay_click}
-			transition:fade={{ duration: 150 }}
-		>
+		<div class="modal-overlay" on:click={overlay_click} transition:fade={{ duration: 150 }}>
 			<div class="modal-container">
 				<main>
 					<h1>Are you want to end your test ?</h1>
 					<div>
-						<button > <a href="/ResultPage" accesskey="y">YES </a></button>
-						<button on:click="{()=>(show=false)}" accesskey="n"> NO </button>
+						<a href="/ResultPage">
+							<!-- svelte-ignore a11y-accesskey -->
+							<button accesskey="y"> YES </button>
+						</a>
+						<!-- svelte-ignore a11y-accesskey -->
+						<button on:click={() => (show = false)} accesskey="n"> NO </button>
 					</div>
 				</main>
 			</div>
@@ -30,7 +30,7 @@
 {/if}
 
 <style>
-	a{
+	a {
 		text-decoration: none;
 		color: black;
 		cursor: default;

@@ -15,7 +15,10 @@
 				<main>
 					<h2>TIMES UP, Now click here to go to Result Page.</h2>
 					<div>
-						<button ><a href="../routes/ResultPage" accesskey="r">Result</a></button>
+						<a href="/ResultPage">
+							<!-- svelte-ignore a11y-accesskey -->
+							<button accesskey="r"> Result </button>
+						</a>
 					</div>
 				</main>
 			</div>
@@ -24,7 +27,7 @@
 {/if}
 
 <style>
-	a{
+	a {
 		text-decoration: none;
 		color: black;
 		cursor: default;
@@ -49,25 +52,24 @@
 	}
 	button {
 		margin-top: 30px;
-        padding: 5px;
-        font-size: 20px;
+		padding: 5px;
+		font-size: 20px;
 		width: 100px;
-        border-radius: 6px;
+		border-radius: 6px;
 	}
 	.modal-container {
 		position: relative;
 		background-color: #ffffff;
 		width: 50vw;
-        height: 170px;
-        border-radius: 15px;
+		height: 170px;
+		border-radius: 10px;
 		margin: 1rem auto 0.2rem;
 		box-shadow: 0 3px 10px #555;
 	}
 	main {
 		padding: 0.5rem;
 	}
-    #outerdiv{
-        color: black;
-        
-    }
+	#outerdiv {
+		color: black;
+	}
 </style>

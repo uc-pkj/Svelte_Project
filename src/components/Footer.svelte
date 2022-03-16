@@ -40,7 +40,6 @@
 		</div>
 
 		<div use:clickOutside on:click-outside={handleClickOutside}>
-		<!-- <div> -->
 			<!-- svelte-ignore a11y-accesskey -->
 			<button
 				class="list_previous btn"
@@ -65,14 +64,17 @@
 		</div>
 		<div>
 			{#if currentdata + 1 >= 11}
+				<!-- svelte-ignore a11y-accesskey -->
 				<button class="list_previous btn" on:click={increasequesvalue} disabled accesskey="n"
 					>Next</button
 				>
 			{:else}
+				<!-- svelte-ignore a11y-accesskey -->
 				<button class="list_previous btn" id="idnext" on:click={increasequesvalue} accesskey="n"
 					>Next</button
 				>
 			{/if}
+			<!-- svelte-ignore a11y-accesskey -->
 			<button
 				class="list_previous btn"
 				on:click={() => {

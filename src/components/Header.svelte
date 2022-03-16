@@ -1,11 +1,6 @@
-<script>
-	let src='./Image'
-</script>
 <main>
 	<header id="mainheader">
 		<div id="headerdiv">
-			<!-- <p>LOGO</p> -->
-			<!-- <img src="./" alt=""> -->
 			<img src="./uclogo.png" alt="logo">
 		</div>
 		<div id="headerdiv2">
@@ -45,10 +40,6 @@
 		align-items: center;
 		justify-content: center;
 	}
-	/* #headerdiv>p{
-		margin: 0;
-		font-size: 20px;
-	} */
 	#headerdiv2{
 		font-size: 35px;
 	}

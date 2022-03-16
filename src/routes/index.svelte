@@ -4,9 +4,16 @@
 
 <Header />
 <div id="startTest">
-	<!-- <button><a href="/testPage" accesskey="s">Start Test</a></button> -->
-	<button><a href="/testPage" accesskey="s">Start Test</a></button>
+	<a href="/testPage">
+		<!-- svelte-ignore a11y-accesskey -->
+		<button accesskey="s"> Start Test </button>
+	</a>
 </div>
+<!-- <div>
+	<a href="src/routes/Review/review.svelte">
+	<button>review page</button></a>
+</div> -->
+
 
 <style>
 	#startTest {
@@ -16,15 +23,15 @@
 		height: 99vh;
 		min-width: 130px;
 	}
-	#startTest > button {
+	button {
 		padding: 10px;
 		width: 130px;
 		font-size: 20px;
 		border: 2px solid black;
 		border-radius: 5px;
 	}
-    a{
-        text-decoration: none;
-        color: black;
-    }
+	a {
+		text-decoration: none;
+		color: black;
+	}
 </style>

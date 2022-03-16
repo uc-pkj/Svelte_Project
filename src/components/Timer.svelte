@@ -1,7 +1,7 @@
 <script>
 	import { tweened } from 'svelte/motion';
 	let original = 2 * 60;
-	// let original = 1 * 3;
+	// let original = 1 * 2;
 	let timer = tweened(original);
 	setInterval(() => {
 		if ($timer > 0) $timer--;
