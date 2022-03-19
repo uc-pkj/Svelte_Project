@@ -1,7 +1,7 @@
 <main>
 	<header id="mainheader">
 		<div id="headerdiv">
-			<img src="./uclogo.png" alt="logo">
+			<img src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png" alt="logo">
 		</div>
 		<div id="headerdiv2">
 			<p>uCertify Test Prep</p>

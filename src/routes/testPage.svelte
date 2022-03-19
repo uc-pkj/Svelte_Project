@@ -36,7 +36,7 @@
 	$: savedanswers.update((items) => {
 		return [...selected];
 	});
-	console.log(selected);
+	// console.log(selected);
 
 	// this function is run when user click on radio button
 	import { answerCheckedByUser, attemptQuestion } from '../store.js';

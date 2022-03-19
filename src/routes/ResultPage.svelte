@@ -75,13 +75,10 @@
 
 	// for showing number of attempted questions
 	$: data2 = $savedanswers.filter(Boolean);
-
-
 </script>
 
 <Header />
 <main>
-	
 	<div id="outerdiv">
 		<div id="upperboxes">
 			<div class="boxes">
@@ -117,50 +114,53 @@
 		</div>
 		<div class="showques">
 			{#each $saveddata as item, i}
-				<a href={`review/${i}`} on:click={reviewPage}>
-						<div id="quesandans">
-							<!-- for questions  -->
-							<div id="topques">
-								<!-- svelte-ignore a11y-invalid-attribute -->
-								<p class="bold">
-									<a href="#">Q{i + 1}.{JSON.parse(item.content_text).question}</a>
-								</p>
+			<div id="quesandans">
+						<!-- <a > -->
+					<!-- for questions  -->
+						<div id="topques">
+							<!-- svelte-ignore a11y-invalid-attribute -->
+							<p class="bold">
+								<a href={`Review/${i}`} on:click={reviewPage}>Q{i + 1}.{JSON.parse(item.content_text).question}</a>
+								<!-- <a href={`${i}`} on:click={reviewPage}>Q{i + 1}.{JSON.parse(item.content_text).question}</a> -->
+							</p>
+						</div>
+
+						<!-- for answers  -->
+						<div id="optionandcorrect">
+							<!-- show all answers  -->
+							<div id="answersshow">
+								{#each option as optionData, j}
+									<div
+										class="{`${actualCorrectArray[i] == j}`} border"
+										class:selected={actualCorrectArray[i] != answerChoosebyUserArr[i] &&
+										answerChoosebyUserArr[i] == j
+											? true
+											: false}
+									>
+										<p>{optionData}</p>
+									</div>
+								{/each}
 							</div>
-
-
-							<!-- for answers  -->
-							<div id="optionandcorrect">
-								<!-- show all answers  -->
-								<div id="answersshow">
-									{#each option as optionData, j}
-										<div
-											class="{`${actualCorrectArray[i] == j}`} border" 
-											class:selected={actualCorrectArray[i] != answerChoosebyUserArr[i] && answerChoosebyUserArr[i] == j? true: false}>
-							
-											<p>{optionData}</p>
-										</div>
-									{/each}
-								</div>
-								<!-- user review about questions  -->
-								<div id="commentbased" >
-									{#each $answerCheckedByUser as selectQue}
-										{#if i + 1 == selectQue.quesNo}
-											{#if selectQue.userAns == 0}
-												<p>INCORRECT</p>
-											{:else}
-												<p id="correct">CORRECT</p>
-											{/if}
+							<!-- user review about questions  -->
+							<div id="commentbased">
+								{#each $answerCheckedByUser as selectQue}
+									{#if i + 1 == selectQue.quesNo}
+										{#if selectQue.userAns == 0}
+											<p>INCORRECT</p>
+										{:else}
+											<p id="correct">CORRECT</p>
 										{/if}
-									{/each}
-									{#each unselected as un}
-										{#if i + 1 == un}
-											<p>UNATTEMPTED</p>
-										{/if}
-									{/each}
-								</div>
+									{/if}
+								{/each}
+								{#each unselected as un}
+									{#if i + 1 == un}
+										<p>UNATTEMPTED</p>
+									{/if}
+								{/each}
 							</div>
 						</div>
-				</a>
+					<!-- </a> -->
+					</div>
 			{/each}
 		</div>
 	</div>
@@ -170,33 +170,33 @@
 		<button class="restartbtn">Restart</button>
 	</a>
 </div>
+
 <!-- <div>
 	<a href="./Review/review.svelte">
 	<button>review page</button></a>
 </div> -->
-
 <style>
-	#color{
+	#color {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
 		margin-top: 15px;
 		width: 800px;
 	}
-	#color>h4{
+	#color > h4 {
 		margin-bottom: 5px;
 	}
-	#color1{
+	#color1 {
 		border: 1px solid black;
 		background-color: green;
 		color: green;
 	}
-	#color2{
+	#color2 {
 		border: 1px solid black;
 		background-color: red;
 		color: red;
 	}
-	#color3{
+	#color3 {
 		border: 1px solid black;
 		background-color: lightblue;
 		color: lightblue;
@@ -242,35 +242,34 @@
 		border-radius: 9px;
 		padding: 5px;
 	}
-	#quesandans{
+	#quesandans {
 		display: flex;
-
 	}
 	#topques {
 		display: block;
 		font-size: 18px;
 		margin: 5px;
-		white-space: nowrap; 
+		white-space: nowrap;
 		width: 720px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	#topques:hover{
+	#topques:hover {
 		text-decoration: underline;
 	}
 	.bold {
 		font-weight: bold;
 	}
-	#optionandcorrect{
+	#optionandcorrect {
 		display: flex;
 	}
 	#answersshow {
 		display: flex;
-	} 
+	}
 	.true {
 		background-color: lightblue;
 	}
-	#correct{
+	#correct {
 		background-color: green;
 		color: white;
 		width: 100px;
@@ -287,11 +286,11 @@
 		text-align: center;
 		padding: 2px;
 		margin: 2px;
-	} 
-	#commentbased{
+	}
+	#commentbased {
 		margin-left: 5px;
 	}
-	#restartbtndiv{
+	#restartbtndiv {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -307,7 +306,7 @@
 		border-color: rgb(1, 112, 34);
 		font-family: cursive;
 		background-color: lightcoral;
-		color:white;
+		color: white;
 	}
 	a {
 		text-decoration: none;
