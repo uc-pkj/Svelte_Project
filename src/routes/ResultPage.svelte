@@ -1,10 +1,18 @@
+<!-- 
+	// File name : ResultPage.svelte
+	// Description : Contain all result page data
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date :  -->
+
 <script>
 	import Header from '../components/Header.svelte';
-	// import review from './Review/review.svelte'
 
 	import { onMount } from 'svelte';
-	import { saveddata, answerCheckedByUser, savedanswers, reviewNavigator } from '../store.js';
-	// import { saveddata, answerCheckedByUser, savedanswers } from '../store.js';
+	import { savedData, answerCheckedByUser, savedanswers, reviewNavigator } from '../store.js';
 
 	let correct = 0;
 	let incorrect = 0;
@@ -14,11 +22,11 @@
 	let answerChoosebyUserArr = [];
 	let option = ['A', 'B', 'C', 'D']; // option check by user
 
-	$: for (let i = 0; i < $saveddata.length; i++) {
+	$: for (let i = 0; i < $savedData.length; i++) {
 		let correctIndex = 0;
 		if ($savedanswers[i]) {
 			for (let j = 0; j < 4; j++) {
-				if (JSON.parse($saveddata[i].content_text).answers[j].answer == $savedanswers[i]) {
+				if (JSON.parse($savedData[i].content_text).answers[j].answer == $savedanswers[i]) {
 					correctIndex = j;
 				}
 			}
@@ -28,10 +36,10 @@
 		answerChoosebyUserArr[i] = correctIndex;
 	}
 
-	$: for (let i = 0; i < $saveddata.length; i++) {
+	$: for (let i = 0; i < $savedData.length; i++) {
 		let actualCorrect = 0;
 		for (let j = 0; j < 4; j++) {
-			if (JSON.parse($saveddata[i].content_text).answers[j].is_correct == '1') {
+			if (JSON.parse($savedData[i].content_text).answers[j].is_correct == '1') {
 				actualCorrect = j;
 			}
 		}
@@ -59,7 +67,7 @@
 	let j;
 	let unselected = [];
 	let matched = [];
-	for (let i = 0; i < $saveddata.length; i++) {
+	for (let i = 0; i < $savedData.length; i++) {
 		for (j = 0; j < $answerCheckedByUser.length; j++) {
 			if (i + 1 == $answerCheckedByUser[j].quesNo) {
 				matched[i] = i + 1;
@@ -108,12 +116,12 @@
 		</div>
 
 		<div id="color">
-			<h4>(Attempted + Correct) Color : <span id="color1">.....</span></h4>
-			<h4>(Attempted + InCorrect) Color : <span id="color2">.....</span></h4>
-			<h4>(Correct Answers) Color : <span id="color3">.....</span></h4>
+			<h4 style="display:flex">(Attempted + Correct)  : <span id="color1" style="display:inline-block; background-color:green; width:30px;height:20px"></span></h4>
+			<h4 style="display:flex">(Attempted + InCorrect)  : <span id="color2" style="display:inline-block; background-color:red; width:30px;height:20px"></span></h4>
+			<h4 style="display:flex">(Correct Answers)  : <span id="color3" style="display:inline-block; background-color:lightblue; width:30px;height:20px"></span></h4>
 		</div>
 		<div class="showques">
-			{#each $saveddata as item, i}
+			{#each $savedData as item, i}
 			<div id="quesandans">
 						<!-- <a > -->
 					<!-- for questions  -->
@@ -121,7 +129,6 @@
 							<!-- svelte-ignore a11y-invalid-attribute -->
 							<p class="bold">
 								<a href={`Review/${i}`} on:click={reviewPage}>Q{i + 1}.{JSON.parse(item.content_text).question}</a>
-								<!-- <a href={`${i}`} on:click={reviewPage}>Q{i + 1}.{JSON.parse(item.content_text).question}</a> -->
 							</p>
 						</div>
 
@@ -171,10 +178,6 @@
 	</a>
 </div>
 
-<!-- <div>
-	<a href="./Review/review.svelte">
-	<button>review page</button></a>
-</div> -->
 <style>
 	#color {
 		display: flex;
@@ -188,18 +191,12 @@
 	}
 	#color1 {
 		border: 1px solid black;
-		background-color: green;
-		color: green;
 	}
 	#color2 {
 		border: 1px solid black;
-		background-color: red;
-		color: red;
 	}
 	#color3 {
 		border: 1px solid black;
-		background-color: lightblue;
-		color: lightblue;
 	}
 	#outerdiv {
 		margin-top: 100px;

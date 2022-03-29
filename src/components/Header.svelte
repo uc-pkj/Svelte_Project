@@ -1,9 +1,19 @@
+<!-- 
+	// File name : Header.svelte
+	// Description : Contain header (top bar) of all components.
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date :  -->
+
 <main>
-	<header id="mainheader">
-		<div id="headerdiv">
+	<header id="MainHeader">
+		<div id="HeaderDiv">
 			<img src="https://www.ucertify.com/layout/themes/bootstrap4/images/logo/ucertify_logo.png" alt="logo">
 		</div>
-		<div id="headerdiv2">
+		<div id="HeaderDiv2">
 			<p>uCertify Test Prep</p>
 		</div>
 	</header>
@@ -14,7 +24,7 @@
 		padding-left: 50px;
 	}
 	
-	#mainheader{
+	#MainHeader{
 		border: 2px solid black;
 		position:fixed;
 		background-color: white;
@@ -28,7 +38,7 @@
 		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26);
 		min-width: 312px;
 	}
-	#headerdiv{
+	#HeaderDiv{
 		position: absolute;
 		left: 0;
 		margin-left: 13px;
@@ -40,17 +50,17 @@
 		align-items: center;
 		justify-content: center;
 	}
-	#headerdiv2{
+	#HeaderDiv2{
 		font-size: 35px;
 	}
 
 	@media screen and (max-width:554px) {
-		#headerdiv{
+		#HeaderDiv{
 			display: none;
 		}
 	}
 	@media screen and (max-width:347px) {
-		#headerdiv2{
+		#HeaderDiv2{
 			font-size: 28px;
 		}
 	}

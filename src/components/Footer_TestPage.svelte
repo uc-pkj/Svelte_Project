@@ -1,9 +1,19 @@
 <script>
+
+	// File name : Footer_TestPage.svelte
+	// Description : Contain test page footer
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date : 
+
 	// importing components
 	import Navigationbar from './Navigationbar.svelte';
 	import Timer from './Timer.svelte';
 	// by default hidden sidebar
-	let sidebar_show = false;
+	let sidebar_Show = false;
 	// import event dispatcher
 	import { createEventDispatcher } from 'svelte';
 	// assign dispatcher to constant
@@ -20,73 +30,57 @@
 	// @ts-ignore
 	import { clickOutside } from '../function/clickOutside.js';
 	function handleClickOutside(event) {
-		sidebar_show = false;
+		sidebar_Show = false;
 	}
 	// transfer data from navigation bar to test page
 	const clickedquesno = (event) => {
 		dispatch('changques', event.detail);
 	};
-	export let currentdata;
+	export let currentData;
 
 	//import model file (on click on end test dialogue box will appear)
 	import Modal from './Modal.svelte';
-	let modal_show = false;
-	export let disabled=false;
+	let modal_Show = false;
+	export let disabled = false;
 </script>
 
 <footer>
 	<div id="footerdiv">
 		<div>
-			{#if disabled==false}
-			<Timer />
-			{:else}
-			{/if}
+			{#if disabled == false}
+				<Timer />
+			{:else}{/if}
 		</div>
 
 		<div use:clickOutside on:click-outside={handleClickOutside}>
 			<!-- svelte-ignore a11y-accesskey -->
 			<button
-				class="list_previous btn"
-				on:click={() => (sidebar_show = !sidebar_show)}
-				accesskey="l" {disabled}>List</button
+				class="List_Previous btn"
+				on:click={() => (sidebar_Show = !sidebar_Show)}
+				accesskey="l"
+				{disabled}>List</button
 			>
-			<Navigationbar on:clickedquesno={clickedquesno} bind:show={sidebar_show} />
-			{#if currentdata + 1 <= 1}
+			<Navigationbar on:clickedquesno={clickedquesno} bind:show={sidebar_Show} />
 				<!-- svelte-ignore a11y-accesskey -->
-				<button class="list_previous btn" on:click={decreasequesvalue} disabled accesskey="p"
-					>Previous</button
-				>
-			{:else}
-				<!-- svelte-ignore a11y-accesskey -->
-				<button class="list_previous btn" on:click={decreasequesvalue} accesskey="p"
-					>Previous</button
-				>
-			{/if}
+				<button class="List_Previous btn" on:click={decreasequesvalue} disabled={currentData+1<=1} accesskey="p">Previous</button>
 		</div>
 		<div>
 			<span>{count} of 11</span>
 		</div>
 		<div>
-			{#if currentdata + 1 >= 11}
 				<!-- svelte-ignore a11y-accesskey -->
-				<button class="list_previous btn" on:click={increasequesvalue} disabled accesskey="n"
-					>Next</button
-				>
-			{:else}
-				<!-- svelte-ignore a11y-accesskey -->
-				<button class="list_previous btn" id="idnext" on:click={increasequesvalue} accesskey="n"
-					>Next</button
-				>
-			{/if}
+				<button class="List_Previous btn" on:click={increasequesvalue} disabled={currentData + 1 >= 11} accesskey="n">Next</button>
+			
 			<!-- svelte-ignore a11y-accesskey -->
 			<button
-				class="list_previous btn"
+				class="List_Previous btn"
 				on:click={() => {
-					modal_show = true;
+					modal_Show = true;
 				}}
-				accesskey="e" {disabled}>End Test</button
+				accesskey="e"
+				{disabled}>End Test</button
 			>
-			<Modal bind:show={modal_show} />
+			<Modal bind:show={modal_Show} />
 		</div>
 	</div>
 </footer>
@@ -106,7 +100,7 @@
 		bottom: 10px;
 		right: 10px;
 	}
-	.list_previous {
+	.List_Previous {
 		margin: 0;
 	}
 	.btn {

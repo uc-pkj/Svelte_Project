@@ -1,7 +1,16 @@
+	// File name : store.svelte
+	// Description : Used for store all data
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date : 
+
 import { writable } from 'svelte/store';
 
 //store all questions and answer data(questionAnswerData)
-export const saveddata = writable()
+export const savedData = writable()
 
 // to store how many question are attempted
 export const attemptQuestion = writable(0);

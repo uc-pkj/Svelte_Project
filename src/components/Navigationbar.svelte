@@ -1,3 +1,12 @@
+<!-- 
+	// File name : Navigationbar.svelte
+	// Description : Contain navigation bar, where all questions are clickable
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date :  -->
 <script>
 	import { onMount } from 'svelte';
 	import { each } from 'svelte/internal';
@@ -5,14 +14,14 @@
 	import { fly } from 'svelte/transition';
 	export let show = false;
 
-	import {saveddata } from '../store.js';
+	import {savedData } from '../store.js';
 	import TestPage from '../routes/testPage.svelte';
-	let data = [];
-	onMount(() => {
-		saveddata.subscribe((value) => {
-			data = value;
-		});
-	});
+	// let data = [];
+	// onMount(() => {
+	// 	savedData.subscribe((value) => {
+	// 		data = value;
+	// 	});
+	// });
 
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
@@ -32,11 +41,10 @@
 		<h2>Attempted : {data1.length}</h2>
 		<h2>Unattempted : {11-data1.length}</h2>
 		<h3>Questions..</h3>
-		{#each data as item, i}
+		{#each $savedData as item, i}
 			<p class="elep">
 				<!-- svelte-ignore a11y-invalid-attribute -->
 				<!-- svelte-ignore a11y-accesskey -->
-				<!-- <a href="#" on:click={() => handleClick((clickedques = i))} accesskey={i+1}><strong>Q{i + 1}. </strong>{JSON.parse(item.content_text).question}</a -->
 				<a href="#" on:click={() => handleClick((clickedques = i))}><strong>Q{i + 1}. </strong>{JSON.parse(item.content_text).question}</a
 				>
 			</p>

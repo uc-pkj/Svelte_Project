@@ -1,3 +1,13 @@
+
+	<!-- // File name : [id].svelte
+	// Description : clickable questions on result page and goes to review page.
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date :  -->
+
 <script context="module">
 	export const load = ({ params }) => {
 		const id = params.id;
@@ -11,16 +21,14 @@
 
 <script>
 	import Header from '../../components/Header.svelte'
-	import { saveddata, answerCheckedByUser, reviewNavigator } from '../../store.js';
-	import Footer1 from '../../components/Footer1.svelte';
+	import { savedData, answerCheckedByUser, reviewNavigator } from '../../store.js';
+	import Footer_ReviewPage from '../../components/Footer_ReviewPage.svelte';
 	import { onDestroy } from 'svelte';
 	export let id;
 	let pageNo = Number(id); 
 	let explanationAnswer; 
-	// let spicitstr=explanationAnswer
 	$: if (pageNo + 1) {
-		// explanationAnswer = JSON.parse($saveddata[pageNo+1].content_text).explanation;
-		explanationAnswer = JSON.parse($saveddata[pageNo].content_text).explanation;
+		explanationAnswer = JSON.parse($savedData[pageNo].content_text).explanation;
 		let indexOfSeq = explanationAnswer.indexOf('<seq');
 		while (indexOfSeq > -1) {
 			let str1 = explanationAnswer.substr(indexOfSeq, 14);
@@ -48,14 +56,12 @@
 		});
 	});
 
-	// const 
-
 </script>
 
 <Header />
 <div class="reviewPage">
 	<div class="questionsContainer">
-		{#each $saveddata as data, i}
+		{#each $savedData as data, i}
 			{#if pageNo == i}
 				<div class="question">
 					<h3>
@@ -89,7 +95,6 @@
 						{#if answersCorrect.is_correct == 1}
 							<div class="explanation">
 								<p>{@html explanationAnswer}</p>
-								<!-- <p>{@html spicitstr}</p> -->
 							</div>
 						{/if}
 					{/each}
@@ -112,8 +117,8 @@
 	</div>
 </div>
 <div class="textPage__option">
-	<Footer1
-		currentdata={pageNo}
+	<Footer_ReviewPage
+		currentData={pageNo}
 		on:changques={upDateQuestionPage}
 		on:increment={incrementPage}
 		on:decrement={decrementPage}

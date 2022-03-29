@@ -1,18 +1,28 @@
+
+	<!-- // File name : testPage.svelte
+	// Description : Contain all question of test
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date :  -->
+
 <script>
 	// import components
 	import Header from '../components/Header.svelte';
 	// @ts-ignore
-	import Footer from '../components/Footer.svelte';
+	import Footer_TestPage from '../components/Footer_TestPage.svelte';
 
 	// fetching data from JSON file and set data in store file
-	import { saveddata } from '../store.js';
+	import { savedData } from '../store.js';
 	import { onMount } from 'svelte';
 	const apiURL = '/static/data/question.json';
 	let data = [];
 	onMount(async function () {
 		const response = await fetch(apiURL);
 		data = await response.json();
-		saveddata.set(data);
+		savedData.set(data);
 	});
 
 	// change question
@@ -36,7 +46,6 @@
 	$: savedanswers.update((items) => {
 		return [...selected];
 	});
-	// console.log(selected);
 
 	// this function is run when user click on radio button
 	import { answerCheckedByUser, attemptQuestion } from '../store.js';
@@ -55,7 +64,7 @@
 				userAns: ans,
 				userOptionCheck: j
 			};
-			// for comparing the dubliccasy of question
+			// for comparing the duplicacy of question
 			for (let i = 0; i <= userAnswer.length; i++) {
 				if (userAnswer[i].userQue == useCheckAns.userQue) {
 					userAnswer[i] = useCheckAns;
@@ -76,13 +85,14 @@
 				userOptionCheck: j
 			});
 		}
-		// if the dublicasy will be, the remove the dublicasy here
+		// if the duplicacy will be, the remove the dublicasy here
 		let userSelected = Object.values(
 			userAnswer.reduce((acc, cur) => Object.assign(acc, { [cur.userQue]: cur }), {})
 		);
 		// all attempted question goes here
 		answerCheckedByUser.set(userSelected);
-		for (i = 0; i <= userSelected.length; i++) {
+		for (i = 0; i <= userSelected.length; i++) 
+		{
 			attemptQuestion.update((x) => (x = userSelected.length));
 		}
 	};
@@ -99,7 +109,6 @@
 				<div>
 					{#each JSON.parse(data.content_text).answers as answers, j}
 						<div id="answer">
-							<!-- declare answer id in style  -->
 							<!-- svelte-ignore a11y-label-has-associated-control -->
 							<label>
 							<div id="label1">{j + 1}.</div>
@@ -112,6 +121,14 @@
 										on:click={() => getClassList(j, i)}
 										bind:group={selected[i]}
 									/>
+									<!-- <input
+										type="radio"
+										value={answers.answer}
+										name="answer"
+										id="radio{j}"
+										on:click={() => getClassList(j, i)}
+										bind:group={selected[i]}
+									/> -->
 									{@html answers.answer}
 								</div>
 							</label>
@@ -123,12 +140,12 @@
 	{/each}
 </div>
 
-<Footer
+<Footer_TestPage
 	on:increment={incurrentques}
 	on:decrement={decurrentques}
 	count={currentques + 1}
 	on:changques={changques}
-	currentdata={currentques}
+	currentData={currentques}
 />
 
 <style>

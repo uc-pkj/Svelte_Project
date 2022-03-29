@@ -1,3 +1,14 @@
+
+<!-- 
+	// File name : index.svelte
+	// Description : Main page of project
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date :  -->
+
 <script>
 	import Header from '../components/Header.svelte';
 </script>
@@ -9,11 +20,6 @@
 		<button accesskey="s"> Start Test </button>
 	</a>
 </div>
-<!-- <div>
-	<a href="src/routes/Review/review.svelte">
-	<button>review page</button></a>
-</div> -->
-
 
 <style>
 	#startTest {

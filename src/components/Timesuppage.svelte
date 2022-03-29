@@ -1,3 +1,13 @@
+
+	<!-- // File name : Timesuppage.svelte
+	// Description : Call when times up
+	// Author : Pankaj Kumar
+	// Version : 1
+	// Package : svelte_items
+	// Created : 15 March 2022
+	// Updated by : 
+	// Updated Date :  -->
+
 <script>
 	import { fade } from 'svelte/transition';
 
