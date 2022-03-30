@@ -5,8 +5,8 @@
 	// Version : 1
 	// Package : svelte_items
 	// Created : 15 March 2022
-	// Updated by : 
-	// Updated Date :  -->
+	// Updated by : Pankaj Kumar
+	// Updated Date : 30 March 2022  -->
 
 <script>
 	// import components
@@ -55,7 +55,7 @@
 		const que = JSON.parse(data[currentques].content_text).question; // for collecting the queston
 		const ans = JSON.parse(data[currentques].content_text).answers[j].is_correct; // for collection the correct or incorrect answer(1 or 0)
 		const id = JSON.parse(data[currentques].content_text).answers[j].id; // for collecting the answer id(choose by user when click on radio button)
-		// if user selected more than one question
+		// if user selected more than one questions
 		if (userAnswer.length > 0) {
 			useCheckAns = {
 				quesNo: i + 1,
@@ -64,7 +64,7 @@
 				userAns: ans,
 				userOptionCheck: j
 			};
-			// for comparing the duplicacy of question
+			// for comparing the duplicacy of question, which will further use to calculate incorrect questions.
 			for (let i = 0; i <= userAnswer.length; i++) {
 				if (userAnswer[i].userQue == useCheckAns.userQue) {
 					userAnswer[i] = useCheckAns;
@@ -85,11 +85,12 @@
 				userOptionCheck: j
 			});
 		}
-		// if the duplicacy will be, the remove the dublicasy here
+		// if the duplicacy will be, the remove the duplicacy here
+		// acc is target, cur is source
 		let userSelected = Object.values(
 			userAnswer.reduce((acc, cur) => Object.assign(acc, { [cur.userQue]: cur }), {})
 		);
-		// all attempted question goes here
+		// all attempted question store here
 		answerCheckedByUser.set(userSelected);
 		for (i = 0; i <= userSelected.length; i++) 
 		{
@@ -121,14 +122,7 @@
 										on:click={() => getClassList(j, i)}
 										bind:group={selected[i]}
 									/>
-									<!-- <input
-										type="radio"
-										value={answers.answer}
-										name="answer"
-										id="radio{j}"
-										on:click={() => getClassList(j, i)}
-										bind:group={selected[i]}
-									/> -->
+									
 									{@html answers.answer}
 								</div>
 							</label>

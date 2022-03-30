@@ -5,24 +5,14 @@
 	// Version : 1
 	// Package : svelte_items
 	// Created : 15 March 2022
-	// Updated by : 
-	// Updated Date :  -->
+	// Updated by : Pankaj Kumar
+	// Updated Date : 30 March 2022  -->
 <script>
-	import { onMount } from 'svelte';
-	import { each } from 'svelte/internal';
 
 	import { fly } from 'svelte/transition';
 	export let show = false;
 
 	import {savedData } from '../store.js';
-	import TestPage from '../routes/testPage.svelte';
-	// let data = [];
-	// onMount(() => {
-	// 	savedData.subscribe((value) => {
-	// 		data = value;
-	// 	});
-	// });
-
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	let clickedques;

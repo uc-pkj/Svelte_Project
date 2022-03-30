@@ -5,8 +5,8 @@
 	// Version : 1
 	// Package : svelte_items
 	// Created : 15 March 2022
-	// Updated by : 
-	// Updated Date :  -->
+	// Updated by : Pankaj Kumar
+	// Updated Date : 30 March 2022  -->
 
 <script>
 	import Header from '../components/Header.svelte';
@@ -20,7 +20,7 @@
 
 	let actualCorrectArray = [];
 	let answerChoosebyUserArr = [];
-	let option = ['A', 'B', 'C', 'D']; // option check by user
+	let option = ['A', 'B', 'C', 'D']; // options for user to select
 
 	$: for (let i = 0; i < $savedData.length; i++) {
 		let correctIndex = 0;
@@ -123,7 +123,6 @@
 		<div class="showques">
 			{#each $savedData as item, i}
 			<div id="quesandans">
-						<!-- <a > -->
 					<!-- for questions  -->
 						<div id="topques">
 							<!-- svelte-ignore a11y-invalid-attribute -->
@@ -166,7 +165,6 @@
 								{/each}
 							</div>
 						</div>
-					<!-- </a> -->
 					</div>
 			{/each}
 		</div>

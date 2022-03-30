@@ -4,8 +4,8 @@
 	// Version : 1
 	// Package : svelte_items
 	// Created : 15 March 2022
-	// Updated by : 
-	// Updated Date :  -->
+	// Updated by : Pankaj Kumar
+	// Updated Date : 30 March 2022 -->
 
 <script>
 	import { fade } from 'svelte/transition';

@@ -1,16 +1,14 @@
-	<!-- // File name : Timer.svelte
+<!-- // File name : Timer.svelte
 	// Description : Contain timer function of Footer_TestPage
 	// Author : Pankaj Kumar
 	// Version : 1
 	// Package : svelte_items
 	// Created : 15 March 2022
-	// Updated by : 
-	// Updated Date :  -->
-
+// Updated by : Pankaj Kumar
+	// Updated Date : 30 March 2022  -->
 <script>
 	import { tweened } from 'svelte/motion';
 	let original = 2 * 60;
-	// let original = 1 * 10;
 
 	let timer = tweened(original);
 	setInterval(() => {
@@ -21,7 +19,9 @@
 	$: minname = minutes > 1 ? ':' : ':';
 	$: seconds = Math.floor($timer - minutes * 60);
 
-	$: if(minutes<=1 && seconds<=1){timemodal_show=true}
+	$: if (minutes < 1 && seconds <= 1) {
+		timemodal_show = true;
+	}
 
 	// when times up this is called
 	import Timesuppage from './Timesuppage.svelte';
