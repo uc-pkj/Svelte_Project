@@ -40,7 +40,7 @@
 				<button class="List_Previous btn" on:click={increasequesvalue} disabled={currentData+1>=11} accesskey="n">Next</button>
 			
 			<!-- svelte-ignore a11y-accesskey -->
-			<a href="/"><button class="List_Previous btn">Dashboard</button></a>
+			<a href="/"><button class="List_Previous btn">Home</button></a>
 		</div>
 	</div>
 </footer>
