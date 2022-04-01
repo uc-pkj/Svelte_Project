@@ -35,9 +35,8 @@
 
 <Timesuppage bind:show={timemodal_show} />
 <main>
-	<p>0{minutes}{minname}{seconds < 10 ? '0' + seconds : seconds}</p>
+	<p>{minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds}</p>
 </main>
-
 <style>
 	p {
 		font-size: 18px;
