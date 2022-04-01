@@ -65,7 +65,7 @@
 				userOptionCheck: j
 			};
 			// for comparing the duplicacy of question, which will further use to calculate incorrect questions.
-			for (let i = 0; i <= userAnswer.length; i++) {
+			for (let i = 0; i <= 3; i++) {
 				if (userAnswer[i].userQue == useCheckAns.userQue) {
 					userAnswer[i] = useCheckAns;
 					useCheckAns;
