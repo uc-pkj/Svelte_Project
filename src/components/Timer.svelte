@@ -1,12 +1,14 @@
 <script>
-	/*File name : Timer.svelte
-		Description : Contain timer function of Footer_TestPage
-		Author : Pankaj Kumar
-		Version : 1
-		Package : svelte_items
-		Created : 15 March 2022
-		Updated by : Pankaj Kumar
-		Updated Date : 30 March 2022 */
+	/**
+	 * File name : Timer.svelte
+	 * Description : Contain timer function of Footer_TestPage
+	 * Author : Pankaj Kumar
+	 * Version : 1
+	 * Package : svelte_items
+	 * Created : 15 March 2022
+	 * Updated by : Pankaj Kumar
+	 * Updated Date : 30 March 2022
+	 */
 
 	import { onMount } from 'svelte';
 	export let CountDown = 120000; //give time in milliseconds

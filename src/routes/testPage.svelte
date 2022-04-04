@@ -1,13 +1,14 @@
 <script>
-	/*
-	File name : testPage.svelte
-	Description : Contain all question of test
-	Author : Pankaj Kumar
-	Version : 1
-	Package : svelte_items
-	Created : 15 March 2022
-	Updated by : Pankaj Kumar
-	Updated Date : 30 March 2022 */
+	/**
+	 * File name : testPage.svelte
+	 * Description : Contain all question of test
+	 * Author : Pankaj Kumar
+	 * Version : 1
+	 * Package : svelte_items
+	 * Created : 15 March 2022
+	 * Updated by : Pankaj Kumar
+	 * Updated Date : 30 March 2022
+	 */
 
 	// store answers in a array in store file
 	import { savedAnswers } from '../store.js';
@@ -88,7 +89,7 @@
 		);
 
 		// all attempted question store here
-		$answerCheckedByUser=userSelected;
+		$answerCheckedByUser = userSelected;
 	};
 </script>
 

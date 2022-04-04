@@ -1,12 +1,14 @@
 <script>
-	/* File name : Footer_TestPage.svelte
-	Description : Contain test page footer
-	Author : Pankaj Kumar
-	Version : 1
-	Package : svelte_items
-	Created : 15 March 2022
-	Updated by : Pankaj Kumar
-	Updated Date : 30 March 2022 */
+	/**
+	 * File name : Footer_TestPage.svelte
+	 * Description : Contain test page footer
+	 * Author : Pankaj Kumar
+	 * Version : 1
+	 * Package : svelte_items
+	 * Created : 15 March 2022
+	 * Updated by : Pankaj Kumar
+	 * Updated Date : 30 March 2022
+	 */
 
 	// importing components
 	import Navigationbar from './Navigationbar.svelte';

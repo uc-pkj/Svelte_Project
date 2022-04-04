@@ -1,12 +1,14 @@
 <script>
-	/* File name : index.svelte
-		Description : Main page of project
-		Author : Pankaj Kumar
-		Version : 1
-		Package : svelte_items
-		Created : 15 March 2022
-		Updated by : Pankaj Kumar
-		Updated Date : 30 March 2022 */
+	/**
+	 * File name : index.svelte
+	 * Description : Main page of project
+	 * Author : Pankaj Kumar
+	 * Version : 1
+	 * Package : svelte_items
+	 * Created : 15 March 2022
+	 * Updated by : Pankaj Kumar
+	 * Updated Date : 30 March 2022
+	 */
 
 	import Header from '../components/Header.svelte';
 </script>

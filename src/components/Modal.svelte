@@ -1,16 +1,18 @@
 <script>
-	/*File name : Model.svelte
-	Description : Contain popup when you click end test button
-	Author : Pankaj Kumar
-	Version : 1
-	Package : svelte_items
-	Created : 15 March 2022
-	Updated by : Pankaj Kumar
-	Updated Date : 30 March 2022*/
+	/**
+	 * File name : Model.svelte
+	 * Description : Contain popup when you click end test button
+	 * Author : Pankaj Kumar
+	 * Version : 1
+	 * Package : svelte_items
+	 * Created : 15 March 2022
+	 * Updated by : Pankaj Kumar
+	 * Updated Date : 30 March 2022
+	 */
 
 	import { fade } from 'svelte/transition';
 
-	function overlay_Click(e) {
+	function overlayClick(e) {
 		if ('close' in e.target.dataset) show = false;
 	}
 
@@ -20,7 +22,7 @@
 
 {#if show}
 	<div>
-		<div class="modal_Overlay" on:click={overlay_Click} transition:fade={{ duration: 150 }}>
+		<div class="modal_Overlay" on:click={overlayClick} transition:fade={{ duration: 150 }}>
 			<div class="modal_Container">
 				<main>
 					<h1>Are you want to end your test ?</h1>

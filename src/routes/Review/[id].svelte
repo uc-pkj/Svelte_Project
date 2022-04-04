@@ -10,14 +10,16 @@
 </script>
 
 <script>
-	/* File name : [id].svelte
-		Description : clickable questions on result page and goes to review page.
-		Author : Pankaj Kumar
-		Version : 1
-		Package : svelte_items
-		Created : 15 March 2022
-		Updated by : Pankaj Kumar
-		Updated Date : 30 March 2022 */
+	/**
+	 * File name : [id].svelte
+	 * Description : clickable questions on result page and goes to review page.
+	 * Author : Pankaj Kumar
+	 * Version : 1
+	 * Package : svelte_items
+	 * Created : 15 March 2022
+	 * Updated by : Pankaj Kumar
+	 * Updated Date : 30 March 2022
+	 */
 
 	import Header from '../../components/Header.svelte';
 	import { savedData, answerCheckedByUser, reviewNavigator } from '../../store.js';

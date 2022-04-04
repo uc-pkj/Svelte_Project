@@ -1,11 +1,13 @@
-/* File name : store.svelte
-	Description : Used for store all data
-	Author : Pankaj Kumar
-	Version : 1
-	Package : svelte_items
-	Created : 15 March 2022
-	Updated by : Pankaj Kumar
-	Updated Date : 30 March 2022 */
+/**
+ * File name : store.svelte
+ * Description : Used for store all data
+ * Author : Pankaj Kumar
+ * Version : 1
+ * Package : svelte_items
+ * Created : 15 March 2022
+ * Updated by : Pankaj Kumar
+ * Updated Date : 30 March 2022
+ */
 
 import { writable } from 'svelte/store';
 

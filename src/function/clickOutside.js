@@ -1,11 +1,13 @@
-/* File name : clickOutside.js
-	Description : when you click outside navigation bar, it will close (using this file)
-	Author : Pankaj Kumar
-	Version : 1
-	Package : svelte_items
-	Created : 15 March 2022
-	Updated by : Pankaj Kumar
-	Updated Date : 30 March 2022 */
+/**
+ * File name : clickOutside.js
+ * Description : when you click outside navigation bar, it will close (using this file)
+ * Author : Pankaj Kumar
+ * Version : 1
+ * Package : svelte_items
+ * Created : 15 March 2022
+ * Updated by : Pankaj Kumar
+ * Updated Date : 30 March 2022
+ */
 
 export function clickOutside(node) {
 	const handleClick = (event) => {

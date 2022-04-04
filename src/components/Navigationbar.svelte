@@ -1,12 +1,14 @@
 <script>
-	/* File name : Navigationbar.svelte
-		Description : Contain navigation bar, where all questions are clickable
-		Author : Pankaj Kumar
-		Version : 1
-		Package : svelte_items
-		Created : 15 March 2022
-		Updated by : Pankaj Kumar
-		Updated Date : 30 March 2022 */
+	/**
+	 * File name : Navigationbar.svelte
+	 * Description : Contain navigation bar, where all questions are clickable
+	 * Author : Pankaj Kumar
+	 * Version : 1
+	 * Package : svelte_items
+	 * Created : 15 March 2022
+	 * Updated by : Pankaj Kumar
+	 * Updated Date : 30 March 2022
+	 */
 
 	import { fly } from 'svelte/transition';
 	export let show = false;

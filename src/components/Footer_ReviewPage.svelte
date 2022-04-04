@@ -1,12 +1,14 @@
 <script>
-	/*	File name : Footer_ReviewPage.svelte
-	Description : Contain result page footer (different from test page footer)
-	Author : Pankaj Kumar
-	Version : 1
-	Package : svelte_items
-	Created : 15 March 2022
-	Updated by : Pankaj Kumar
-	Updated Date : 30 March 2022 */
+	/**
+	 * File name : Footer_ReviewPage.svelte
+	 * Description : Contain result page footer (different from test page footer)
+	 * Author : Pankaj Kumar
+	 * Version : 1
+	 * Package : svelte_items
+	 * Created : 15 March 2022
+	 * Updated by : Pankaj Kumar
+	 * Updated Date : 30 March 2022
+	 */
 
 	// import event dispatcher
 	import { createEventDispatcher } from 'svelte';
