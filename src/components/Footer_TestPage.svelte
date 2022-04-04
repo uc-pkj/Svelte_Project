@@ -1,13 +1,12 @@
 <script>
-
-	// File name : Footer_TestPage.svelte
-	// Description : Contain test page footer
-	// Author : Pankaj Kumar
-	// Version : 1
-	// Package : svelte_items
-	// Created : 15 March 2022
-	// Updated by : Pankaj Kumar
-	// Updated Date : 30 March 2022
+	/* File name : Footer_TestPage.svelte
+	Description : Contain test page footer
+	Author : Pankaj Kumar
+	Version : 1
+	Package : svelte_items
+	Created : 15 March 2022
+	Updated by : Pankaj Kumar
+	Updated Date : 30 March 2022 */
 
 	// importing components
 	import Navigationbar from './Navigationbar.svelte';
@@ -19,11 +18,11 @@
 	// assign dispatcher to constant
 	const dispatch = createEventDispatcher();
 	// for next question
-	const increasequesvalue = () => {
+	const increaseQuestionValue = () => {
 		dispatch('increment');
 	};
 	// for previous question
-	const decreasequesvalue = () => {
+	const decreaseQuestionValue = () => {
 		dispatch('decrement');
 	};
 	export let count;
@@ -33,8 +32,8 @@
 		sidebar_Show = false;
 	}
 	// transfer data from navigation bar to test page
-	const clickedquesno = (event) => {
-		dispatch('changques', event.detail);
+	const clickedQuestionNo = (event) => {
+		dispatch('changeQuestion', event.detail);
 	};
 	export let currentData;
 
@@ -45,7 +44,7 @@
 </script>
 
 <footer>
-	<div id="footerdiv">
+	<div id="FooterDiv">
 		<div>
 			{#if disabled == false}
 				<Timer />
@@ -60,17 +59,27 @@
 				accesskey="l"
 				{disabled}>List</button
 			>
-			<Navigationbar on:clickedquesno={clickedquesno} bind:show={sidebar_Show} />
-				<!-- svelte-ignore a11y-accesskey -->
-				<button class="List_Previous btn" on:click={decreasequesvalue} disabled={currentData+1<=1} accesskey="p">Previous</button>
+			<Navigationbar on:clickedQuestionNo={clickedQuestionNo} bind:show={sidebar_Show} />
+			<!-- svelte-ignore a11y-accesskey -->
+			<button
+				class="List_Previous btn"
+				on:click={decreaseQuestionValue}
+				disabled={currentData + 1 <= 1}
+				accesskey="p">Previous</button
+			>
 		</div>
 		<div>
 			<span>{count} of 11</span>
 		</div>
 		<div>
-				<!-- svelte-ignore a11y-accesskey -->
-				<button class="List_Previous btn" on:click={increasequesvalue} disabled={currentData + 1 >= 11} accesskey="n">Next</button>
-			
+			<!-- svelte-ignore a11y-accesskey -->
+			<button
+				class="List_Previous btn"
+				on:click={increaseQuestionValue}
+				disabled={currentData + 1 >= 11}
+				accesskey="n">Next</button
+			>
+
 			<!-- svelte-ignore a11y-accesskey -->
 			<button
 				class="List_Previous btn"
@@ -86,7 +95,7 @@
 </footer>
 
 <style>
-	#footerdiv {
+	#FooterDiv {
 		width: 630px;
 		height: 60px;
 		border-radius: 10px;

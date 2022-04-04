@@ -1,39 +1,38 @@
-<!-- 
-	// File name : ResultPage.svelte
-	// Description : Contain all result page data
-	// Author : Pankaj Kumar
-	// Version : 1
-	// Package : svelte_items
-	// Created : 15 March 2022
-	// Updated by : Pankaj Kumar
-	// Updated Date : 30 March 2022  -->
-
 <script>
+	/* File name : ResultPage.svelte
+		Description : Contain all result page data
+		Author : Pankaj Kumar
+		Version : 1
+		Package : svelte_items
+		Created : 15 March 2022
+		Updated by : Pankaj Kumar
+		Updated Date : 30 March 2022 */
+
 	import Header from '../components/Header.svelte';
 
 	import { onMount } from 'svelte';
-	import { savedData, answerCheckedByUser, savedanswers, reviewNavigator } from '../store.js';
+	import { savedData, answerCheckedByUser, savedAnswers, reviewNavigator } from '../store.js';
 
 	let correct = 0;
 	let incorrect = 0;
 	let percentage = 0;
 
 	let actualCorrectArray = [];
-	let answerChoosebyUserArr = [];
+	let answerChoosebyUserArray = [];
 	let option = ['A', 'B', 'C', 'D']; // options for user to select
 
 	$: for (let i = 0; i < $savedData.length; i++) {
 		let correctIndex = 0;
-		if ($savedanswers[i]) {
+		if ($savedAnswers[i]) {
 			for (let j = 0; j < 4; j++) {
-				if (JSON.parse($savedData[i].content_text).answers[j].answer == $savedanswers[i]) {
+				if (JSON.parse($savedData[i].content_text).answers[j].answer == $savedAnswers[i]) {
 					correctIndex = j;
 				}
 			}
 		} else {
 			correctIndex = null;
 		}
-		answerChoosebyUserArr[i] = correctIndex;
+		answerChoosebyUserArray[i] = correctIndex;
 	}
 
 	$: for (let i = 0; i < $savedData.length; i++) {
@@ -82,13 +81,13 @@
 	}
 
 	// for showing number of attempted questions
-	$: data2 = $savedanswers.filter(Boolean);
+	$: data2 = $savedAnswers.filter(Boolean);
 </script>
 
 <Header />
 <main>
-	<div id="outerdiv">
-		<div id="upperboxes">
+	<div id="OuterDiv">
+		<div id="UpperBoxes">
 			<div class="boxes">
 				<p>Total Ques</p>
 				<h2>11</h2>
@@ -116,63 +115,80 @@
 		</div>
 
 		<div id="color">
-			<h4 style="display:flex">(Attempted + Correct)  : <span id="color1" style="display:inline-block; background-color:green; width:30px;height:20px"></span></h4>
-			<h4 style="display:flex">(Attempted + InCorrect)  : <span id="color2" style="display:inline-block; background-color:red; width:30px;height:20px"></span></h4>
-			<h4 style="display:flex">(Correct Answers)  : <span id="color3" style="display:inline-block; background-color:lightblue; width:30px;height:20px"></span></h4>
+			<h4 style="display:flex">
+				(Attempted + Correct) : <span
+					id="color1"
+					style="display:inline-block; background-color:green; width:30px;height:20px"
+				/>
+			</h4>
+			<h4 style="display:flex">
+				(Attempted + InCorrect) : <span
+					id="color2"
+					style="display:inline-block; background-color:red; width:30px;height:20px"
+				/>
+			</h4>
+			<h4 style="display:flex">
+				(Correct Answers) : <span
+					id="color3"
+					style="display:inline-block; background-color:lightblue; width:30px;height:20px"
+				/>
+			</h4>
 		</div>
 		<div class="showques">
 			{#each $savedData as item, i}
-			<div id="quesandans">
+				<div id="QuesAndAns">
 					<!-- for questions  -->
-						<div id="topques">
-							<!-- svelte-ignore a11y-invalid-attribute -->
-							<p class="bold">
-								<a href={`Review/${i}`} on:click={reviewPage}>Q{i + 1}.{JSON.parse(item.content_text).question}</a>
-							</p>
-						</div>
+					<div id="TopQues">
+						<!-- svelte-ignore a11y-invalid-attribute -->
+						<p class="bold">
+							<a href={`Review/${i}`} on:click={reviewPage}
+								>Q{i + 1}.{JSON.parse(item.content_text).question}</a
+							>
+						</p>
+					</div>
 
-						<!-- for answers  -->
-						<div id="optionandcorrect">
-							<!-- show all answers  -->
-							<div id="answersshow">
-								{#each option as optionData, j}
-									<div
-										class="{`${actualCorrectArray[i] == j}`} border"
-										class:selected={actualCorrectArray[i] != answerChoosebyUserArr[i] &&
-										answerChoosebyUserArr[i] == j
-											? true
-											: false}
-									>
-										<p>{optionData}</p>
-									</div>
-								{/each}
-							</div>
-							<!-- user review about questions  -->
-							<div id="commentbased">
-								{#each $answerCheckedByUser as selectQue}
-									{#if i + 1 == selectQue.quesNo}
-										{#if selectQue.userAns == 0}
-											<p>INCORRECT</p>
-										{:else}
-											<p id="correct">CORRECT</p>
-										{/if}
+					<!-- for answers  -->
+					<div id="OptionAndCorrect">
+						<!-- show all answers  -->
+						<div id="AnswersShow">
+							{#each option as optionData, j}
+								<div
+									class="{`${actualCorrectArray[i] == j}`} border"
+									class:selected={actualCorrectArray[i] != answerChoosebyUserArray[i] &&
+									answerChoosebyUserArray[i] == j
+										? true
+										: false}
+								>
+									<p>{optionData}</p>
+								</div>
+							{/each}
+						</div>
+						<!-- user review about questions  -->
+						<div id="CommentBased">
+							{#each $answerCheckedByUser as selectQue}
+								{#if i + 1 == selectQue.quesNo}
+									{#if selectQue.userAns == 0}
+										<p>INCORRECT</p>
+									{:else}
+										<p id="correct">CORRECT</p>
 									{/if}
-								{/each}
-								{#each unselected as un}
-									{#if i + 1 == un}
-										<p>UNATTEMPTED</p>
-									{/if}
-								{/each}
-							</div>
+								{/if}
+							{/each}
+							{#each unselected as un}
+								{#if i + 1 == un}
+									<p>UNATTEMPTED</p>
+								{/if}
+							{/each}
 						</div>
 					</div>
+				</div>
 			{/each}
 		</div>
 	</div>
 </main>
-<div id="restartbtndiv">
+<div id="RestartBtnDiv">
 	<a href="/">
-		<button class="restartbtn">Restart</button>
+		<button class="RestartBtn">Restart</button>
 	</a>
 </div>
 
@@ -196,13 +212,13 @@
 	#color3 {
 		border: 1px solid black;
 	}
-	#outerdiv {
+	#OuterDiv {
 		margin-top: 100px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
-	#upperboxes {
+	#UpperBoxes {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
@@ -237,10 +253,10 @@
 		border-radius: 9px;
 		padding: 5px;
 	}
-	#quesandans {
+	#QuesAndAns {
 		display: flex;
 	}
-	#topques {
+	#TopQues {
 		display: block;
 		font-size: 18px;
 		margin: 5px;
@@ -249,16 +265,16 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	#topques:hover {
+	#TopQues:hover {
 		text-decoration: underline;
 	}
 	.bold {
 		font-weight: bold;
 	}
-	#optionandcorrect {
+	#OptionAndCorrect {
 		display: flex;
 	}
-	#answersshow {
+	#AnswersShow {
 		display: flex;
 	}
 	.true {
@@ -282,15 +298,15 @@
 		padding: 2px;
 		margin: 2px;
 	}
-	#commentbased {
+	#CommentBased {
 		margin-left: 5px;
 	}
-	#restartbtndiv {
+	#RestartBtnDiv {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
-	.restartbtn {
+	.RestartBtn {
 		text-align: center;
 		width: 90px;
 		height: 43px;

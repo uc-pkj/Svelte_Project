@@ -1,13 +1,3 @@
-
-	<!-- // File name : [id].svelte
-	// Description : clickable questions on result page and goes to review page.
-	// Author : Pankaj Kumar
-	// Version : 1
-	// Package : svelte_items
-	// Created : 15 March 2022
-	// Updated by : Pankaj Kumar
-	// Updated Date : 30 March 2022  -->
-
 <script context="module">
 	export const load = ({ params }) => {
 		const id = params.id;
@@ -20,13 +10,22 @@
 </script>
 
 <script>
-	import Header from '../../components/Header.svelte'
+	/* File name : [id].svelte
+		Description : clickable questions on result page and goes to review page.
+		Author : Pankaj Kumar
+		Version : 1
+		Package : svelte_items
+		Created : 15 March 2022
+		Updated by : Pankaj Kumar
+		Updated Date : 30 March 2022 */
+
+	import Header from '../../components/Header.svelte';
 	import { savedData, answerCheckedByUser, reviewNavigator } from '../../store.js';
 	import Footer_ReviewPage from '../../components/Footer_ReviewPage.svelte';
 	import { onDestroy } from 'svelte';
 	export let id;
-	let pageNo = Number(id); 
-	let explanationAnswer; 
+	let pageNo = Number(id);
+	let explanationAnswer;
 	$: if (pageNo + 1) {
 		explanationAnswer = JSON.parse($savedData[pageNo].content_text).explanation;
 		let indexOfSeq = explanationAnswer.indexOf('<seq');
@@ -55,7 +54,6 @@
 			return (x = false);
 		});
 	});
-
 </script>
 
 <Header />
@@ -116,7 +114,7 @@
 		{/each}
 	</div>
 </div>
-<div class="textPage__option">
+<div class="textPage__Option">
 	<Footer_ReviewPage
 		currentData={pageNo}
 		on:changques={upDateQuestionPage}
@@ -127,7 +125,7 @@
 </div>
 
 <style>
-	.reviewPage{
+	.reviewPage {
 		margin-top: 100px;
 	}
 	label {
@@ -144,13 +142,12 @@
 		padding: 5px;
 		border-radius: 5px;
 	}
-	.incomparationResult>h3{
+	.incomparationResult > h3 {
 		text-align: center;
 		background-color: red;
 		color: white;
 		padding: 5px;
 		border-radius: 5px;
-
 	}
 	.hello {
 		border: 2px solid white;
@@ -186,7 +183,7 @@
 	.answerOptionData {
 		margin-top: 8px;
 	}
-	.textPage__option {
+	.textPage__Option {
 		position: fixed;
 		bottom: 10px;
 		right: 20px;

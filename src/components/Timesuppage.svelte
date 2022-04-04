@@ -1,17 +1,16 @@
-
-	<!-- // File name : Timesuppage.svelte
-	// Description : Call when times up
-	// Author : Pankaj Kumar
-	// Version : 1
-	// Package : svelte_items
-	// Created : 15 March 2022
-	// Updated by : Pankaj Kumar
-	// Updated Date : 30 March 2022  -->
-
 <script>
+	/*File name : Timesuppage.svelte
+	Description : Call when times up
+	Author : Pankaj Kumar
+	Version : 1
+	Package : svelte_items
+	Created : 15 March 2022
+	Updated by : Pankaj Kumar
+	Updated Date : 30 March 2022 */
+
 	import { fade } from 'svelte/transition';
 
-	function overlay_click(e) {
+	function overlay_Click(e) {
 		if ('close' in e.target.dataset) show = false;
 	}
 
@@ -19,9 +18,9 @@
 </script>
 
 {#if show}
-	<div id="outerdiv">
-		<div class="modal-overlay" on:click={overlay_click} transition:fade={{ duration: 150 }}>
-			<div class="modal-container">
+	<div id="outerDiv">
+		<div class="modal_Overlay" on:click={overlay_Click} transition:fade={{ duration: 150 }}>
+			<div class="modal_Container">
 				<main>
 					<h2>TIMES UP, Now click here to go to Result Page.</h2>
 					<div>
@@ -42,7 +41,7 @@
 		color: black;
 		cursor: default;
 	}
-	.modal-overlay {
+	.modal_Overlay {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -67,7 +66,7 @@
 		width: 100px;
 		border-radius: 6px;
 	}
-	.modal-container {
+	.modal_Container {
 		position: relative;
 		background-color: #ffffff;
 		width: 50vw;
@@ -79,7 +78,7 @@
 	main {
 		padding: 0.5rem;
 	}
-	#outerdiv {
+	#outerDiv {
 		color: black;
 	}
 </style>
